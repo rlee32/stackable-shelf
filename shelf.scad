@@ -4,8 +4,8 @@ function i2mm(x) = x * 0.0254 * 1000;
 
 t = 2;
 
-depth = i2mm(6);
-width = i2mm(6);
+depth = i2mm(5.75);
+width = i2mm(5.75);
 h = i2mm(6.75);
 
 tab_len = i2mm(0.5);
@@ -98,6 +98,11 @@ module tabs() {
         leg(c, -(90 - alpha));
     translate([-dx, 0, 0])
         leg(c, -(90 - alpha));
+    hh = h - tab_len;
+    translate([width / 2 - t / 2, 0, hh/2])
+        cube(size=[t, depth, hh], center=true);
+    translate([-width / 2 + t / 2, 0, hh/2])
+        cube(size=[t, depth, hh], center=true);
 }
 
 base_plate();
